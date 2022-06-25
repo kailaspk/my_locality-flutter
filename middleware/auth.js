@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 async function checkUserLogin(req, res, next) {
     const token = req.cookies.token;
     try {
-        jwt.verify(token, process.env.PASSKEY, async(err, decode) => {
+        jwt.verify(token, 'thisisthesecretkey', async(err, decode) => {
             if (err)
                 return res.status(400).send({ success: false, message: 'please authenticate' });
             req.email = decode.email
