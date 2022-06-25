@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
         const user = await User.findByCredentials(req.body.email, req.body.password)
 
         if (user.role == 'user') {
-            const token = jwt.sign({ email: user.email }, process.env.PASSKEY, { expiresIn: 60 * 60 * 60 });
+            const token = jwt.sign({ email: user.email }, 'thisisthesecretkey', { expiresIn: 60 * 60 * 60 });
             res.cookie('token', token, {
                 maxAge: 2 * 60 * 60 * 1000,
                 httpOnly: true
