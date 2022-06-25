@@ -8,7 +8,7 @@ const cookieparser = require('cookie-parser')
 
 const userRouter = require('./router/user')
 const adminRouter = require('./router/admin')
-let port = process.env.port || 4000
+let port = process.env.PORT || 4000
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
